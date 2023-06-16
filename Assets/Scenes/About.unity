@@ -181,8 +181,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Jungle Run: Exciting Temple Run-inspired game. Navigate treacherous jungle,
-    collect coins, enjoy endless running.  Tech: Unity + C#. Features: Coin collection,
+  m_text: 'JungleRun: Exciting Temple Run-inspired game. Navigate treacherous jungle,
+    collect coins, enjoy endless running. Tech: Unity + C#. Features: Coin collection,
     obstacle avoidance, endless mode, animations, background music. Controls: Swipe
     (up/jump, down/slide, left/right/change lanes, left/right with two fingers/quick
     turn). Enjoy the adventure!
@@ -215,8 +215,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 55
-  m_fontSizeBase: 55
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
