@@ -20,6 +20,16 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("Run", true);
         }
+
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            animator.SetBool("Slide", true);
+        }
+    }
+
+    void ToggleOff(string Name)
+    {
+        animator.SetBool("Slide", false);
     }
 
     private void OnAnimatorMove()
