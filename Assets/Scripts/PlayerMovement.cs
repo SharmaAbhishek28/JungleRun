@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             animator.SetBool("Run", true);
         }
@@ -25,15 +25,30 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("Slide", true);
         }
+
+         else if (Input.GetKeyDown(KeyCode.W))
+        {
+            animator.SetBool("Jump", true);
+        }
     }
 
     void ToggleOff(string Name)
     {
-        animator.SetBool("Slide", false);
+        animator.SetBool(Name, false);
     }
+
+
 
     private void OnAnimatorMove()
     {
-        rigidbody.MovePosition(rigidbody.position + Vector3.forward * animator.deltaPosition.magnitude);
+        if (animator.GetBool("Jump"))
+        {
+            rigidbody.MovePosition(rigidbody.position + new Vector3(0, 1, 1) * animator.deltaPosition.magnitude);    
+        }
+        else
+        {
+            rigidbody.MovePosition(rigidbody.position + Vector3.forward * animator.deltaPosition.magnitude);    
+        }
+        
     }
 }
