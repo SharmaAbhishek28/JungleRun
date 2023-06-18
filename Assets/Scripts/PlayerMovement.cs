@@ -35,15 +35,24 @@ public class PlayerMovement : MonoBehaviour
     void ToggleOff(string Name)
     {
         animator.SetBool(Name, false);
+        isJumpDown = false;
     }
 
+    private bool isJumpDown = false;
+    
+    void JumpDown()
+    {
+        isJumpDown = true;
+    }
 
 
     private void OnAnimatorMove()
     {
         if (animator.GetBool("Jump"))
-        {
-            rigidbody.MovePosition(rigidbody.position + new Vector3(0, 1, 1) * animator.deltaPosition.magnitude);    
+        {if(isJumpDown)
+            rigidbody.MovePosition(rigidbody.position + new Vector3(0, 0, 2) * animator.deltaPosition.magnitude);
+        else
+            rigidbody.MovePosition(rigidbody.position + new Vector3(0, 1.5f, 2) * animator.deltaPosition.magnitude);    
         }
         else
         {
