@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
     }
 
-    private float Next_X_POS=0;
+    private float Next_X_POS;
 
     // Update is called once per frame
     void Update()
@@ -35,26 +35,26 @@ public class PlayerMovement : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.D))
         {
             animator.SetBool("Right", true);
-            if(GetComponent<Rigidbody>().position.x >= - 3.5f && GetComponent<Rigidbody>().position.x < -1.5f)
+            if(rigidbody.position.x >= -3 && rigidbody.position.x < -1)
             {
                 Next_X_POS = 0;
             }
-            else if(GetComponent<Rigidbody>().position.x >= - 1.5f && GetComponent<Rigidbody>().position.x < 1.5f)
+            else if(rigidbody.position.x >= -1 && rigidbody.position.x < 1)
             {
-                Next_X_POS = 3.5f;
+                Next_X_POS = 2;
             }
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
             animator.SetBool("Left", true);
 
-            if(GetComponent<Rigidbody>().position.x >=  1.5f && GetComponent<Rigidbody>().position.x < 4.5f)
+            if(rigidbody.position.x >=  1 && rigidbody.position.x < 3)
             {
                 Next_X_POS = 0;
             }
-            else if(GetComponent<Rigidbody>().position.x >= - 1.5f && GetComponent<Rigidbody>().position.x < 1.5f)
+            else if(rigidbody.position.x >= -1 && rigidbody.position.x < 1)
             {
-                Next_X_POS = -3.5f;
+                Next_X_POS = -2;
             }
         }
     }
@@ -85,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
         else if (animator.GetBool("Right"))
         { 
             if(GetComponent<Rigidbody>().position.x < Next_X_POS)
-                GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + Vector3.right * animator.deltaPosition.magnitude);
+                GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + new Vector3(1, 0, 1.5f) * animator.deltaPosition.magnitude);
             else
                 animator.SetBool("Right", false);
         }
@@ -93,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
         else if (animator.GetBool("Left"))
         { 
             if(GetComponent<Rigidbody>().position.x > Next_X_POS)
-                GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + Vector3.left * animator.deltaPosition.magnitude);
+                GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + new Vector3(-1, 0, 1.5f) * animator.deltaPosition.magnitude);
             else
                 animator.SetBool("Left", false);
         }
