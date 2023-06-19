@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
+    public List<GameObject> PooledObjects;
+    
     // Start is called before the first frame update
     void Start()
     {
