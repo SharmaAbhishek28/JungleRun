@@ -127,4 +127,12 @@ public class PlayerMovement : MonoBehaviour
         }
         
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.CompareTag("Obstacle"))
+        {
+            animator.SetBool("Death", true);
+        }
+    }
 }
