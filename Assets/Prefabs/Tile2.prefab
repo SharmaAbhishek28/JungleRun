@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 3064555927626624198}
   m_Layer: 0
   m_Name: stein (1)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 3064555928027286000}
   m_Layer: 0
   m_Name: stein
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: 3064555929154568928}
   m_Layer: 0
   m_Name: stein (2)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

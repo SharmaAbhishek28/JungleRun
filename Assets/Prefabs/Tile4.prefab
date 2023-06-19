@@ -468,6 +468,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stein
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 565b73b670b67e24694ef1382f27d125, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 565b73b670b67e24694ef1382f27d125, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -560,6 +564,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: stein2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8038408d2c8a0544786a435738102699, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8038408d2c8a0544786a435738102699, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -639,6 +647,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 8038408d2c8a0544786a435738102699, type: 3}
       propertyPath: m_Name
       value: stein2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8038408d2c8a0544786a435738102699, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8038408d2c8a0544786a435738102699, type: 3}
       propertyPath: m_RootOrder
