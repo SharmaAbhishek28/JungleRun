@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
     private Animator animator;
     private Rigidbody m_rigidbody;
-    [SerializeField] private GameObject StartScreen;
     // Start is called before the first frame update
 
     public void StartGame()
@@ -26,13 +24,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (animator.GetBool("Death"))
-        {
-            SceneManager.LoadScene("GAME_OVER");
-        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            StartScreen.SetActive(false);
             animator.SetBool("Run", true);
         }
 
