@@ -9,6 +9,11 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody m_rigidbody;
     [SerializeField] private GameObject StartScreen;
     // Start is called before the first frame update
+
+    public void StartGame()
+    {
+
+    }
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -17,10 +22,87 @@ public class PlayerMovement : MonoBehaviour
 
     private float Next_X_POS;
     private bool Left, Right;
-
+    private Vector2 TouchBegan, TouchMove;
+    private float DRAG_X, DRAG_Y;
+    private bool CanDrag;
     // Update is called once per frame
     void Update()
     {
+        
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began)
+            {
+                CanDrag = true;
+                TouchBegan = touch.position;
+                TouchMove = Vector2.zero;
+            }
+            else  if (touch.phase == TouchPhase.Moved && CanDrag)
+            {
+                TouchMove = touch.position;
+
+                DRAG_X = Mathf.Abs(TouchBegan.x - TouchMove.x);
+                DRAG_Y = Mathf.Abs(TouchBegan.y - TouchMove.y);
+
+                if (DRAG_Y > DRAG_X)
+                {
+                    //swipe up
+                    if (TouchMove.y > TouchBegan.y)
+                    {
+                        CanDrag = false;
+                        animator.SetBool("Jump", true);
+                    }
+                    //swipe down
+                    else
+                    {
+                        CanDrag = false;
+                        animator.SetBool("Slide", true);
+                    }
+                }
+                else if (DRAG_X > DRAG_Y)
+                {
+                    //swipe RIGHT
+                    if (TouchMove.x > TouchBegan.x)
+                    {
+                        CanDrag = false;
+                       if (!animator.GetBool("Jump") && !animator.GetBool("Slide"))
+                            animator.SetBool("Right", true);
+
+                        else 
+                            Right = true;
+
+                        if(m_rigidbody.position.x >= -3 && m_rigidbody.position.x < -1)
+                        {
+                            Next_X_POS = 0;
+                        }
+                        else if(m_rigidbody.position.x >= -1 && m_rigidbody.position.x < 1)
+                        {
+                            Next_X_POS = 2;
+                        } 
+                    }
+                    //swipe LEFT
+                    else
+                    {
+                        CanDrag = false;
+                        if (!animator.GetBool("Jump") && !animator.GetBool("Slide"))
+                        animator.SetBool("Left", true);
+
+                        else Left =  true;
+
+                        if(m_rigidbody.position.x >=  1 && m_rigidbody.position.x < 3)
+                        {
+                            Next_X_POS = 0;
+                        }
+                        else if(m_rigidbody.position.x >= -1 && m_rigidbody.position.x < 1)
+                        {
+                            Next_X_POS = -2;
+                        }
+                    }
+                }
+            }
+        }
+
         if (animator.GetBool("Death"))
         {
             SceneManager.LoadScene("GAME_OVER");
