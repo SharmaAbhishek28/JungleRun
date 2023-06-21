@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Animator animator;
+
+    public static int score=0;
+    
     private Rigidbody m_rigidbody;
     // Start is called before the first frame update
 
@@ -24,24 +27,38 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+            Debug.Log(score);
+        if (animator.GetBool("Death"))
+        {
+            SceneManager.LoadScene("GAME_OVER");
+        }
+        if (Input.GetKeyDown(KeyCode.Space)||SwipeManager.tap)
+=======
         if (Input.GetKeyDown(KeyCode.Space))
+
         {
             animator.SetBool("Run", true);
         }
 
-        else if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S)||SwipeManager.swipeDown)
         {
             animator.SetBool("Slide", true);
+            SwipeManager.swipeDown=false;
         }
 
-        else if (Input.GetKeyDown(KeyCode.W))
+        else if (Input.GetKeyDown(KeyCode.W)||SwipeManager.swipeUp)
         {
+            Debug.Log("jump");
             animator.SetBool("Jump", true);
+            SwipeManager.swipeUp=false;
         }
-        else if (Input.GetKeyDown(KeyCode.D))
+        else if (Input.GetKeyDown(KeyCode.D)|| SwipeManager.swipeRight)
         {
-            if (!animator.GetBool("Jump") && !animator.GetBool("Slide"))
+            if (!animator.GetBool("Jump") && !animator.GetBool("Slide")){
             animator.SetBool("Right", true);
+            SwipeManager.swipeRight=false;
+            }
 
             else 
                 Right = true;
@@ -55,10 +72,12 @@ public class PlayerMovement : MonoBehaviour
                 Next_X_POS = 2;
             }
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+        else if (Input.GetKeyDown(KeyCode.A)||SwipeManager.swipeLeft)
         {
-            if (!animator.GetBool("Jump") && !animator.GetBool("Slide"))
+            if (!animator.GetBool("Jump") && !animator.GetBool("Slide")){
             animator.SetBool("Left", true);
+            SwipeManager.swipeLeft=false;
+            }
 
             else Left =  true;
 
