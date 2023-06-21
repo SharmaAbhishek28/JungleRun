@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,8 +9,12 @@ public class PlayerMovement : MonoBehaviour
     public static int score=0;
     
     private Rigidbody m_rigidbody;
-    [SerializeField] private GameObject StartScreen;
     // Start is called before the first frame update
+
+    public void StartGame()
+    {
+
+    }
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -20,18 +23,21 @@ public class PlayerMovement : MonoBehaviour
 
     private float Next_X_POS;
     private bool Left, Right;
-
+   
     // Update is called once per frame
     void Update()
     {
+
             Debug.Log(score);
         if (animator.GetBool("Death"))
         {
             SceneManager.LoadScene("GAME_OVER");
         }
         if (Input.GetKeyDown(KeyCode.Space)||SwipeManager.tap)
+=======
+        if (Input.GetKeyDown(KeyCode.Space))
+
         {
-            StartScreen.SetActive(false);
             animator.SetBool("Run", true);
         }
 
